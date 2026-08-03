@@ -73,7 +73,7 @@ def test_bootstrap_device_id_and_client_prefers_cookie_jar(api_base):
         login_resp = MagicMock()
         login_resp.cookies = {"wssdi": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"}
         login_resp.text = (
-            '<html><head><script src="https://cdn.wealthsimple.com/app-1234abcd.js">'
+            '<html><head><script src="https://cdn.wealthsimple.com/app-1234XyZw.js">'
             "</script></head></html>"
         )
 
@@ -94,7 +94,7 @@ def test_bootstrap_device_id_and_client_prefers_cookie_jar(api_base):
         # calls are request(method, url, ...)
         called = [(c[0][0], c[0][1]) for c in mock_request.call_args_list]
         assert called[0] == ("GET", "https://my.wealthsimple.com/app/login")
-        assert "app-1234abcd.js" in called[1][1]
+        assert "app-1234XyZw.js" in called[1][1]
 
 
 def test_bootstrap_device_id_falls_back_to_header_parsing(api_base):

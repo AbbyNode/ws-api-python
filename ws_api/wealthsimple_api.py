@@ -157,7 +157,7 @@ class WealthsimpleAPIBase:
                 for line in resp.text.splitlines():
                     if "<script" in line.lower():
                         match = re.search(
-                            r'<script.*src="(.+/app-[a-f0-9]+\.js)',
+                            r'<script.*src="(.+/app-[a-zA-Z0-9]+\.js)',
                             line,
                             re.IGNORECASE,
                         )
